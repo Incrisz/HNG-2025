@@ -135,3 +135,8 @@ For troubleshooting, check Apache logs:
 sudo tail -f /var/log/apache2/error.log
 ```
 
+#FOR Python 
+
+switch to sudo on your ubuntu and run the python-main.sh
+
+open with : http://ip-address/api/classify-number?number=371
