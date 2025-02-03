@@ -137,3 +137,9 @@ For troubleshooting, check Apache logs:
 sudo tail -f /var/log/apache2/error.log
 ```
 
+
+when uploading use
+
+http://18.133.157.28/api/classify-number.php  # without parameter
+
+https://github.com/Incrisz/HNG-2025
