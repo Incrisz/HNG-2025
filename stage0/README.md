@@ -1,0 +1,1 @@
+blog post : https://medium.com/@godwinincrisz/the-easiest-way-to-set-up-nginx-on-aws-c0edd3dbc5e9
