@@ -1,0 +1,36 @@
+Title Slide
+
+Project name (e.g., Stage 3A Architecture)
+Your group members’ names
+Overview
+
+Briefly state the task objective (what the system is meant to accomplish).
+Summarize the key points: dynamic creation of backends, isolated test environments, and deployment.
+High-Level Architecture
+
+Show your main architecture diagram (the same one from your documentation).
+Point out the Kubernetes namespaces (test vs. production), pods, CI/CD flow, and traffic routing.
+Infrastructure Components
+
+List the Kubernetes resources (namespaces, pods, services, ingress).
+Mention the database, testing application, and any load balancers or gateways.
+CI/CD Pipeline
+
+Show how code moves from commit → build → test → deploy.
+Highlight any automated testing or validation steps.
+Blue-Green / Test–Prod Approach
+
+Emphasize how the system handles updates with minimal downtime.
+Explain the promotion process from test pods to production pods.
+Reliability and Monitoring
+
+Mention how logs, metrics, or monitoring tools are integrated (if applicable).
+Briefly explain rollback or fallback strategies (in case something fails in production).
+Summary / Q&A
+
+Recap the benefits: dynamic deployments, testing in isolated environments, easy rollbacks.
+Provide time for questions from mentors or the audience.
+Tip: Keep slides concise and visual—focus on diagrams, bullet points, and short explanations rather than text-heavy slides. This ensures your presentation is clear and engaging.
+
+
+
