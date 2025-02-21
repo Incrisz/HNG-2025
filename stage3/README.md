@@ -131,5 +131,5 @@ cd app
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-Your FastAPI application should now be running and accessible at `http://0.0.0.0:8000/`.
+Your FastAPI application should now be running and accessible at `http://{your_ip}:8000/`.
 
