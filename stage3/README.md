@@ -1,54 +1,138 @@
-# Stage 3A Task
+# Backend Infrastructure Setup Guide
 
-## Task Objective
-In this stage, the interns will work in groups (groups will be posted in the private channel) to design a setup for **backend.im** that allows code to be executed, tested, and deployed dynamically. The system should provide a structured way to deploy and test backend code in isolated environments. Each deployment will be handled within a Kubernetes namespace containing:
+This guide provides step-by-step instructions for setting up the backend infrastructure, including K3s (lightweight Kubernetes), Go, and Python dependencies.
 
-- A pod for the application
-- A pod for the database
-- A pod for the testing application
-- A pod for the testing database
+---
 
-## Requirements
+## **1. System Update & Upgrade**
+Update and upgrade the system packages to ensure you have the latest versions.
+```sh
+sudo apt update && sudo apt upgrade -y
+```
 
-### Architecture Proposal
+---
 
-#### System Design Submission
-- **Design a system architecture** that outlines how backends will be generated and deployed.
-- **Document all key components**, including Kubernetes resources, API gateway, and CI/CD pipeline.
-- **Submit the architecture** for approval via the designated form or channel.
+## **2. Install K3s (Lightweight Kubernetes)**
+### **Step 1: Install K3s**
+```sh
+curl -sfL https://get.k3s.io | sh -
+```
 
-#### Approval Process
-- The proposal will be reviewed by mentors, who will provide feedback.
-- Once approved, you can proceed with implementation (this will be the next task).
+### **Step 2: Verify K3s Installation**
+```sh
+k3s --version
+```
 
-The architecture should cover the following areas:
+### **Step 3: Enable and Start K3s Service**
+```sh
+sudo systemctl enable --now k3s
+```
 
-#### Infrastructure Setup
-- Use Kubernetes to manage namespaces and pods for applications, databases, and testing environments.
-- Set up an API gateway to handle requests and route them correctly.
-- Configure Kubernetes services for internal communication.
+### **Step 4: Configure K3s**
+```sh
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+```
 
-#### Code Deployment
-- Implement a structured deployment process for backend services.
-- Ensure proper validation and database updates during deployment.
-- Test deployed endpoints and report results to the main system.
+### **Step 5: Verify K3s Cluster**
+```sh
+kubectl get nodes
+```
 
-#### State Management
-- Move successfully tested code to production pods and validate the deployment.
+---
 
-### Acceptance Criteria
-- The system should dynamically create and deploy backend services based on user input.
-- A clear and detailed architectural diagram of the entire system must be provided.
-- You must be prepared to explain your design and implementation decisions to mentors.
+## **3. Install Kubectl (Kubernetes CLI)**
+Download and install the latest stable version of `kubectl`.
+```sh
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
 
-### Submission Mode
-- Create a detailed architectural document along with presentation slides.
+Verify the installation:
+```sh
+kubectl version --client
+```
 
-## Interview Process
-After submission, you will be interviewed by DevOps mentors. Be ready to discuss:
-- Your architecture design and the rationale behind your choices.
-- How the system ensures reliability and functionality.
-- The challenges you faced and how you addressed them.
+---
 
-> **Note:** This stage only involves designing the setup; implementation is not required at this point.
+## **4. Install Python & Pip**
+### **Step 1: Install Python & Pip**
+```sh
+sudo apt install python3-pip -y
+```
+
+### **Step 2: Verify Python Version**
+```sh
+python3.9 --version
+```
+
+### **Step 3: Upgrade Pip**
+```sh
+pip install --upgrade pip
+```
+
+---
+
+## **5. Install Go (Golang) 1.22**
+### **Step 1: Remove Old Go Version**
+```sh
+sudo rm -rf /usr/local/go
+```
+
+### **Step 2: Download & Install Go 1.22**
+```sh
+wget https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz
+rm go1.22.0.linux-amd64.tar.gz
+```
+
+### **Step 3: Add Go to PATH**
+```sh
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### **Step 4: Verify Go Installation**
+```sh
+go version
+```
+
+---
+
+## **6. Clone the Backend Repository**
+Clone the backend repository from GitHub and navigate into the project directory.
+```sh
+git clone https://github.com/obiMadu/backend.im-infra
+cd backend.im-infra
+```
+
+---
+
+## **7. Set Up Python Virtual Environment & Install Dependencies**
+### **Step 1: Install Virtual Environment Support**
+```sh
+sudo apt install python3.12-venv -y
+```
+
+### **Step 2: Create and Activate Virtual Environment**
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### **Step 3: Install Required Dependencies**
+```sh
+pip install -r app/requirements.txt
+```
+
+---
+
+## **8. Start the FastAPI Server**
+Navigate to the application directory and run the FastAPI server.
+```sh
+cd app
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Your FastAPI application should now be running and accessible at `http://0.0.0.0:8000/`.
 
