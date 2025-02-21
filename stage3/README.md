@@ -63,7 +63,7 @@ sudo apt install python3-pip -y
 
 ### **Step 2: Verify Python Version**
 ```sh
-python3.9 --version
+python3 --version
 ```
 
 ### **Step 3: Upgrade Pip**
