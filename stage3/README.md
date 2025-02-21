@@ -66,10 +66,7 @@ sudo apt install python3-pip -y
 python3 --version
 ```
 
-### **Step 3: Upgrade Pip**
-```sh
-pip install --upgrade pip
-```
+
 
 ---
 
