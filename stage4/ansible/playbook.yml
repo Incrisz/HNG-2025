@@ -1,0 +1,5 @@
+- name: Install Docker and Deploy Services
+  hosts: localhost
+  become: yes
+  roles:
+    - docker
