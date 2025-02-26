@@ -20,10 +20,10 @@ resource "aws_instance" "ec2-worker1" {
       sudo apt install -y ansible git
 
       # Clone the Ansible playbook from GitHub
-      git clone https://github.com/Incrisz/Terraform-ansible.git /home/ubuntu/Terraform-ansible
+      git clone https://github.com/Incrisz/HNG-2025.git /home/ubuntu/HNG-2025
 
       # Run the Ansible playbook
-      cd /home/ubuntu/Terraform-ansible/ansible
+      cd /home/ubuntu/HNG-2025/stage4/ansible
       ansible-playbook playbook.yml
   EOF
 
