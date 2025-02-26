@@ -76,6 +76,11 @@
 - name: Deploy application using Docker Compose
   shell: |
     cd /home/ubuntu/DevOps-Stage-4
+    git fetch origin 
+    git reset --hard HEAD 
+    git checkout containerization 
+    git reset --hard origin/containerization 
+    git pull --rebase --no-edit
     docker compose up -d
   args:
     executable: /bin/bash
