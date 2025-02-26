@@ -20,4 +20,3 @@ resource "aws_vpc" "custom_vpc" {
 
 
 
-# https://youtu.be/hw3uWq4FPhU
