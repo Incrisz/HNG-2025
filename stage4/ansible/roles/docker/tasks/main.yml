@@ -78,8 +78,8 @@
     cd /home/ubuntu/DevOps-Stage-4-Microservices-
     git fetch origin 
     git reset --hard HEAD 
-    git checkout containerization 
-    git reset --hard origin/containerization 
+    git checkout traefik 
+    git reset --hard origin/traefik 
     git pull --rebase --no-edit
     docker compose up -d
   args:
