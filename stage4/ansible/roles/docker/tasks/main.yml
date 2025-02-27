@@ -70,12 +70,12 @@
 
 - name: Clone project repository
   git:
-    repo: "https://github.com/Incrisz/DevOps-Stage-4.git"
-    dest: "/home/ubuntu/DevOps-Stage-4"
+    repo: "https://github.com/Incrisz/DevOps-Stage-4-Microservices-.git"
+    dest: "/home/ubuntu/DevOps-Stage-4-Microservices-"
 
 - name: Deploy application using Docker Compose
   shell: |
-    cd /home/ubuntu/DevOps-Stage-4
+    cd /home/ubuntu/DevOps-Stage-4-Microservices-
     git fetch origin 
     git reset --hard HEAD 
     git checkout containerization 
